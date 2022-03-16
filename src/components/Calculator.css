@@ -28,19 +28,22 @@
   font-size: 1.5rem;
 }
 
-.calc-buttons > button:nth-of-type(4n), .calc-buttons > button:last-child {
+.calc-buttons > button:nth-last-of-type(3) {
+  width: 50%;
+}
+
+.calc-buttons > button:nth-of-type(4n),
+.calc-buttons > button:last-child {
   background-color: lightgray;
   border-width: 0.5px;
 }
 
-.calc-buttons > button:nth-of-type(4n):hover, .calc-buttons > button:last-child:hover {
+.calc-buttons > button:nth-of-type(4n):hover,
+.calc-buttons > button:last-child:hover {
   background-color: #c6c6c6;
 }
 
-.calc-buttons > button:nth-of-type(4n):active, .calc-buttons > button:last-child:active {
+.calc-buttons > button:nth-of-type(4n):active,
+.calc-buttons > button:last-child:active {
   background-color: #e1e1e1;
-}
-
-.calc-buttons > button:nth-last-of-type(3) {
-  width: 50%;
 }

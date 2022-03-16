@@ -21,7 +21,7 @@
 
 ## Live Page
 
-[Page Link](https://helio3197.github.io/math-magicians/dist/)
+[Page Link](https://helio3197.github.io/math-magicians/build/)
 
 
 ## Getting Started

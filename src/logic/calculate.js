@@ -16,7 +16,7 @@ function isNumber(item) {
 export default function calculate(obj, buttonName) {
   if (buttonName === 'AC') {
     return {
-      total: null,
+      total: '0',
       next: null,
       operation: null,
     };
@@ -24,25 +24,25 @@ export default function calculate(obj, buttonName) {
 
   if (isNumber(buttonName)) {
     if (buttonName === '0' && obj.next === '0') {
-      return {};
+      return { total: '0' };
     }
     // If there is an operation, update next
     if (obj.operation) {
       if (obj.next) {
-        return { ...obj, next: obj.next + buttonName };
+        return { ...obj, next: obj.next + buttonName, total: `${(obj.next[0] === '-') ? `${obj.totalCalc} ${obj.operation} (${obj.next + buttonName})` : obj.total + buttonName}` };
       }
-      return { ...obj, next: buttonName };
+      return { ...obj, next: buttonName, total: obj.total + buttonName };
     }
     // If there is no operation, update next and clear the value
     if (obj.next) {
       return {
         next: obj.next + buttonName,
-        total: null,
+        total: obj.total + buttonName,
       };
     }
     return {
       next: buttonName,
-      total: null,
+      total: `${buttonName}`,
     };
   }
 
@@ -51,38 +51,47 @@ export default function calculate(obj, buttonName) {
       if (obj.next.includes('.')) {
         return { ...obj };
       }
-      return { ...obj, next: `${obj.next}.` };
+      return { ...obj, next: `${obj.next}.`, total: `${obj.total}.` };
     }
     if (obj.operation) {
-      return { next: '0.' };
+      return { ...obj, next: '0.', total: `${obj.total}0.` };
     }
     if (obj.total) {
       if (obj.total.includes('.')) {
-        return {};
+        return { ...obj };
       }
-      return { total: `${obj.total}.` };
+      return { ...obj, next: `${obj.total}.`, total: `${obj.total}.` };
     }
-    return { total: '0.' };
+    // return { next: '0.', total: '0.' };
   }
 
   if (buttonName === '=') {
     if (obj.next && obj.operation) {
       return {
-        total: operate(obj.total, obj.next, obj.operation),
+        ...obj,
+        total: operate(((obj.totalCalc) ? obj.totalCalc : '0'), obj.next, obj.operation),
+        totalCalc: operate(((obj.totalCalc) ? obj.totalCalc : '0'), obj.next, obj.operation),
         next: null,
         operation: null,
       };
     }
     // '=' with no operation, nothing to do
-    return {};
+    return { total: '0' };
   }
 
   if (buttonName === '+/-') {
     if (obj.next) {
-      return { ...obj, next: (-1 * parseFloat(obj.next)).toString() };
+      const updateValue = (-1 * parseFloat(obj.next)).toString();
+      return { ...obj, next: updateValue, total: (obj.totalCalc) ? `${obj.totalCalc} ${obj.operation} ${(updateValue[0] === '-') ? `(${updateValue})` : updateValue}` : updateValue };
     }
     if (obj.total) {
-      return { ...obj, total: (-1 * parseFloat(obj.total)).toString() };
+      if (obj.total === '0') {
+        return obj;
+      }
+      if (obj.operation) {
+        return { ...obj, total: `${(-1 * parseFloat(obj.totalCalc)).toString()} ${obj.operation} `, totalCalc: (-1 * parseFloat(obj.totalCalc)).toString() };
+      }
+      return { ...obj, total: `${(-1 * parseFloat(obj.totalCalc)).toString()}`, totalCalc: (-1 * parseFloat(obj.totalCalc)).toString() };
     }
     return {};
   }
@@ -97,19 +106,20 @@ export default function calculate(obj, buttonName) {
 
   // User pressed an operation after pressing '='
   if (!obj.next && obj.total && !obj.operation) {
-    return { ...obj, operation: buttonName };
+    return { ...obj, operation: buttonName, total: `${obj.total} ${buttonName} ` };
   }
 
   // User pressed an operation button and there is an existing operation
   if (obj.operation) {
     if (obj.total && !obj.next) {
-      return { ...obj, operation: buttonName };
+      return { ...obj, operation: buttonName, total: `${(obj.totalCalc) ? obj.totalCalc : '0'} ${buttonName} ` };
     }
 
     return {
-      total: operate(obj.total, obj.next, obj.operation),
+      total: `${operate(((obj.totalCalc) ? obj.totalCalc : '0'), obj.next, obj.operation)} ${buttonName} `,
       next: null,
       operation: buttonName,
+      totalCalc: operate(((obj.totalCalc) ? obj.totalCalc : '0'), obj.next, obj.operation),
     };
   }
 
@@ -122,7 +132,8 @@ export default function calculate(obj, buttonName) {
 
   // save the operation and shift 'next' into 'total'
   return {
-    total: obj.next,
+    totalCalc: obj.next,
+    total: `${obj.next} ${buttonName} `,
     next: null,
     operation: buttonName,
   };

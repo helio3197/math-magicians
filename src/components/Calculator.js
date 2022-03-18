@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import calculate from '../logic/calculate';
+import dragElement from './drag-calc';
 import './Calculator.css';
 
 const Calculator = () => {
@@ -15,7 +16,7 @@ const Calculator = () => {
   const { total } = calcObj;
 
   return (
-    <div className="calc-wrapper">
+    <div onMouseDown={dragElement} role="button" tabIndex="0" className="calc-wrapper">
       <div className="calc-result">
         <output>{total}</output>
       </div>

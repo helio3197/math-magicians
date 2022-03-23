@@ -1,0 +1,7 @@
+.navItem > a {
+  text-decoration: none;
+}
+
+.navActive {
+  color: red;
+}

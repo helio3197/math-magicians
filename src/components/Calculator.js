@@ -16,12 +16,39 @@ const Calculator = () => {
   const { total } = calcObj;
 
   return (
-    <div onMouseDown={dragElement} role="button" tabIndex="0" className="calc-wrapper">
-      <div className="calc-result">
-        <output>{total}</output>
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        padding: '24px calc(6px + 5vw)',
+        display: 'flex',
+        flexWrap: 'wrap',
+      }}
+    >
+      <div
+        style={{
+          width: '50%',
+        }}
+      >
+        <h2>Let&apos;s do some math!</h2>
+        <h3>The calculator is draggable!</h3>
       </div>
-      <div className="calc-buttons">
-        {buttons.map((el) => (<button type="button" onClick={buttonHandler} key={el}>{el}</button>))}
+      <div
+        style={{
+          width: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <div onMouseDown={dragElement} role="button" tabIndex="0" className="calc-wrapper">
+          <div className="calc-result">
+            <output>{total}</output>
+          </div>
+          <div className="calc-buttons">
+            {buttons.map((el) => (<button type="button" onClick={buttonHandler} key={el}>{el}</button>))}
+          </div>
+        </div>
       </div>
     </div>
   );

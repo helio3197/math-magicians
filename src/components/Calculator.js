@@ -44,10 +44,10 @@ const Calculator = () => {
       >
         <div onMouseDown={dragElement} role="button" tabIndex="0" className="calc-wrapper">
           <div className="calc-result">
-            <output>{total}</output>
+            <output data-testid="result">{total}</output>
           </div>
           <div className="calc-buttons">
-            {buttons.map((el) => (<button type="button" onClick={buttonHandler} key={el}>{el}</button>))}
+            {buttons.map((el) => (<button type="button" onClick={buttonHandler} data-testid={el} key={el}>{el}</button>))}
           </div>
         </div>
       </div>

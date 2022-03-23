@@ -1,5 +1,5 @@
 const dragElement = (e) => {
-  if (e.target.type !== 'button') {
+  if (e.target.type !== 'button' && e.target.tagName !== 'OUTPUT') {
     e.preventDefault();
     const element = e.currentTarget;
     const startPosX = e.clientX;

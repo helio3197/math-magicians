@@ -20,9 +20,10 @@ const Calculator = () => {
       style={{
         width: '100%',
         height: '100%',
-        padding: '24px calc(6px + 5vw)',
+        padding: '24px 0',
         display: 'flex',
         flexWrap: 'wrap',
+        maxWidth: '960px',
       }}
     >
       <div

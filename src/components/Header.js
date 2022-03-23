@@ -58,7 +58,7 @@ const Header = () => {
           >
             {navLinks.map((item) => (
               <li className={styles.navItem} key={item.id}>
-                <NavLink style={({ isActive }) => ((isActive) ? { color: 'red' } : {})} to={item.path}>{item.name}</NavLink>
+                <NavLink className={({ isActive }) => ((isActive) ? `${styles.navActive}` : '')} to={item.path}>{item.name}</NavLink>
               </li>
             ))}
           </ul>

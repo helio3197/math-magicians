@@ -13,4 +13,7 @@ describe('Tests for Operate Function', () => {
   test('Test Multiply 2 by 5 to be 10 ', () => {
     expect(operate('2', '5', 'x')).toBe('10');
   });
+  test('Test Modulus 5 by 2 to be 1 ', () => {
+    expect(operate('5', '2', '%')).toBe('1');
+  });
 });

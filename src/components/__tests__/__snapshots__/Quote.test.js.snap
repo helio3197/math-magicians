@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Quote component The component should render 1`] = `
+<DocumentFragment>
+  <h2
+    style="display: flex; flex-direction: column; margin: 0px;"
+  >
+    <q
+      style="margin-bottom: 16px; font-size: 2rem;"
+    >
+      Pure mathematics is, in its way, the poetry of logical ideas.
+    </q>
+    <i
+      style="align-self: end; color: rgb(141, 135, 135);"
+    >
+      — Albert Einstein, German theoretical physicist
+    </i>
+  </h2>
+</DocumentFragment>
+`;

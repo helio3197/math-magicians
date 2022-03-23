@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Header component The component should render 1`] = `
+<DocumentFragment>
+  <div
+    style="width: 100%; display: flex; justify-content: center; padding: 12px 24px;"
+  >
+    <header
+      style="display: flex; width: 100%; max-width: 960px; justify-content: space-between; align-items: center;"
+    >
+      <h1
+        style="margin: 0px;"
+      >
+        Math Magicians
+      </h1>
+      <nav>
+        <ul
+          style="margin: 0px; padding: 0px; list-style: none; display: flex; gap: 16px;"
+        >
+          <li
+            class="navItem"
+          >
+            <a
+              aria-current="page"
+              class="navActive"
+              href="/"
+            >
+              Home
+            </a>
+          </li>
+          <li
+            class="navItem"
+          >
+            <a
+              class=""
+              href="/calculator"
+            >
+              Calculator
+            </a>
+          </li>
+          <li
+            class="navItem"
+          >
+            <a
+              class=""
+              href="/quote"
+            >
+              Quote
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+</DocumentFragment>
+`;

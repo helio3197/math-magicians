@@ -1,13 +1,17 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
 import './App.css';
-import Calculator from './components/Calculator';
 
 class App extends React.PureComponent {
   render() {
     return (
-      <div className="calculator-container">
-        <Calculator />
-      </div>
+      <>
+        <Header />
+        <div className="content-container">
+          <Outlet />
+        </div>
+      </>
     );
   }
 }

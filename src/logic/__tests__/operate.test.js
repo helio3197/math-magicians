@@ -10,4 +10,7 @@ describe('Tests for Operate Function', () => {
   test('Test Substract 6 by 2 to be 4 ', () => {
     expect(operate('6', '2', '-')).toBe('4');
   });
+  test('Test Multiply 2 by 5 to be 10 ', () => {
+    expect(operate('2', '5', 'x')).toBe('10');
+  });
 });

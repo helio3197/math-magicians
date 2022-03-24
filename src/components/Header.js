@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { MdClose } from 'react-icons/md';
+import { FiMenu } from 'react-icons/fi';
 import styles from './Header.module.css';
+import './Header.css';
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navLinks = [
     {
       name: 'Home',
@@ -21,6 +26,14 @@ const Header = () => {
     },
   ];
 
+  const menuHandler = () => {
+    setMenuOpen((state) => !state);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <div
       style={{
@@ -28,6 +41,7 @@ const Header = () => {
         display: 'flex',
         justifyContent: 'center',
         padding: '12px 24px',
+        background: 'lightslategrey',
       }}
     >
       <header
@@ -37,6 +51,7 @@ const Header = () => {
           maxWidth: '960px',
           justifyContent: 'space-between',
           alignItems: 'center',
+          position: 'relative',
         }}
       >
         <h1
@@ -47,18 +62,29 @@ const Header = () => {
           Math Magicians
         </h1>
         <nav>
+          <button type="button" onClick={menuHandler} className="menuButton">
+            {(menuOpen)
+              ? <MdClose />
+              : <FiMenu />}
+          </button>
           <ul
+            className="navLinksWrap"
             style={{
               margin: '0',
-              padding: '0',
               listStyle: 'none',
-              display: 'flex',
               gap: '16px',
+              display: (menuOpen) ? 'flex' : 'none',
             }}
           >
             {navLinks.map((item) => (
               <li className={styles.navItem} key={item.id}>
-                <NavLink className={({ isActive }) => ((isActive) ? `${styles.navActive}` : '')} to={item.path}>{item.name}</NavLink>
+                <NavLink
+                  className={({ isActive }) => ((isActive) ? `${styles.navActive}` : '')}
+                  onClick={closeMenu}
+                  to={item.path}
+                >
+                  {item.name}
+                </NavLink>
               </li>
             ))}
           </ul>

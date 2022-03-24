@@ -1,5 +1,8 @@
 .calc-wrapper {
-  width: 400px;
+  min-width: 226px;
+  width: 360px;
+  min-height: 281px;
+  height: 400px;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -21,11 +24,12 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  flex: 1;
 }
 
 .calc-buttons > button {
   width: 25%;
-  padding: 16px;
+  padding: 0;
   font-size: 1.5rem;
 }
 
@@ -47,4 +51,14 @@
 .calc-buttons > button:nth-of-type(4n):active,
 .calc-buttons > button:last-child:active {
   background-color: #e1e1e1;
+}
+
+@media (max-width: 475px) {
+  .calc-wrapper {
+    max-width: 360px;
+    width: 100%;
+    max-height: 400px;
+    height: auto;
+    aspect-ratio: 226 / 281;
+  }
 }

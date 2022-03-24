@@ -20,34 +20,44 @@ const Calculator = () => {
       style={{
         width: '100%',
         height: '100%',
-        padding: '24px 0',
+        padding: '24px calc(6px + 5vw)',
         display: 'flex',
-        flexWrap: 'wrap',
-        maxWidth: '960px',
+        justifyContent: 'center',
       }}
     >
       <div
         style={{
-          width: '50%',
-        }}
-      >
-        <h2>Let&apos;s do some math!</h2>
-        <h3>The calculator is draggable!</h3>
-      </div>
-      <div
-        style={{
-          width: '50%',
+          width: '100%',
+          maxWidth: '960px',
           display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
         }}
       >
-        <div onMouseDown={dragElement} role="button" tabIndex="0" className="calc-wrapper">
-          <div className="calc-result">
-            <output data-testid="result">{total}</output>
-          </div>
-          <div className="calc-buttons">
-            {buttons.map((el) => (<button type="button" onClick={buttonHandler} data-testid={el} key={el}>{el}</button>))}
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '257px',
+          }}
+        >
+          <h2>Let&apos;s do some math!</h2>
+          <h3>The calculator is draggable!</h3>
+        </div>
+        <div
+          style={{
+            flex: '1',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div onMouseDown={dragElement} role="button" tabIndex="0" className="calc-wrapper">
+            <div className="calc-result">
+              <output data-testid="result">{total}</output>
+            </div>
+            <div className="calc-buttons">
+              {buttons.map((el) => (<button type="button" onClick={buttonHandler} data-testid={el} key={el}>{el}</button>))}
+            </div>
           </div>
         </div>
       </div>

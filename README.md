@@ -21,8 +21,9 @@
 
 ## Live Page
 
-[Page Link](https://helio3197.github.io/math-magicians/build/)
+[Click Here](https://math-magicians-helio.netlify.app/)
 
+[Click Here](https://math-magicians-helio.herokuapp.com/)
 
 ## Getting Started
 
